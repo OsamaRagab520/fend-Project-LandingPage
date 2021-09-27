@@ -15,5 +15,15 @@ Project was about adding an interactivity to a static web page using Javascript 
 2. Build a Navigation menu that enables the user to moves between section faily quickly and _smoothly_ using __JS__.
 3. Trigger active status on current viewed section of the page.
 
+### Project Structure
+    │   index.html
+    │   README.md
+    │
+    ├───css
+    │       styles.css
+    │
+    └───js
+              app.js
+              
 ### Suggetions will be added soon.
 #### Stay tuned 😉
