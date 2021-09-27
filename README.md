@@ -7,9 +7,9 @@ This was the first project in "Front-end Professional Nanodgree" to apply what w
 
 ## Description 
 
-Project was about adding an interactivity to a static web page using Javascript features
+Project was about adding an interactivity to a static web page using Javascript featuresز
 
-What i did to do so:
+### What i did to do so:
 
 1. Add addtional section as spcified in the rubric.
 2. Build a Navigation menu that enables the user to moves between section faily quickly and _smoothly_ using __JS__.
