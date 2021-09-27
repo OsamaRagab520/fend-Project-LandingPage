@@ -46,6 +46,8 @@ function bulidNav() {
     navbar.appendChild(fragment);
 }
 
+// My old implementation of managing active sate for the sections
+/*
 function isInView(element) {
 
     // Check whether the section on view or not
@@ -69,13 +71,39 @@ function manageSectionActiveState() {
         }
     }
 }
+*/
+
+// Code review suggested to use APIs instead,
+// because they more effective and mostly uniform irrespective of the platform
+
+// New Implementation using IntersectionObserver
+function manageActiveState() {
+
+    // Creating an intersection observer that triggers active state for the observed section
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.className = 'your-active-class'
+            }
+            else {
+                entry.target.removeAttribute('class');
+            }
+        })
+    }, { rootMargin: '-100px' });
+
+    // Set the observer to observe all page's sections
+    sections.forEach(section => {
+        observer.observe(section);
+    })
+
+}
 
 function getSectionOffset(sectionName) {
 
-    // Itrate through the section to find the corresponding element with given data  
+    // Iterate through the section to find the corresponding element with given data
     for (const section of sections) {
         if (section.dataset.nav == sectionName) {
-            return section.offsetTop;
+            return section.offsetTop - 100;
         }
     }
 }
@@ -89,9 +117,6 @@ function getSectionOffset(sectionName) {
 // build the nav
 bulidNav();
 
-// Add class 'active' to section when near top of viewport
-document.querySelector('section').className = 'your-active-class';
-
 
 /**
  * End Main Functions
@@ -101,13 +126,18 @@ document.querySelector('section').className = 'your-active-class';
 
 // Scroll to section on link click
 navbar.addEventListener('click', e => {
+
+    // To prevent the default action of a tags of redirecting if href attr is set
+    e.preventDefault();
+
+    // Navigate the user to the desired section of the page
     scrollTo({
         top: getSectionOffset(e.target.textContent),
         left: 0,
         behavior: 'smooth'
     });
 })
-// Set sections as active
-document.addEventListener('scroll', manageSectionActiveState)
 
+// Set sections as active
+manageActiveState();
 
