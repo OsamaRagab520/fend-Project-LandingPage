@@ -7,8 +7,7 @@ This was the first project in "Front-end Professional Nanodgree" to apply what w
 
 ## Description 
 
-Project was about adding an interactivity to a static web page using Javascript featuresز
-
+Project was about adding an interactivity to a static web page using Javascript features
 ### What i did to do so:
 
 1. Add addtional section as spcified in the rubric.
